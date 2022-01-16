@@ -1,0 +1,96 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.light-theme{
+    --background-color:hsl(224, 28%, 76%);
+    --calculator-color:rgba(240,240,242,255);
+}
+
+.dark-theme{
+    --background-color:hsl(225, 11%, 30%);
+    --calculator-color:hsl(218, 11%, 15%);
+}
+
+body{
+    background-color: var(--background-color);
+    width:100%;
+    height:100vh;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 1.65rem;
+}
+
+.flex{
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows: repeat(6,1fr);
+}
+
+.calculator{
+    background-color: var(--calculator-color);
+    /* max-width: 400px;
+    min-width: 280px;
+
+    max-height: 825px;
+    min-height: 100px; */
+
+    width: 79%;
+    height: 73vh;
+
+    border-radius: 2.21rem;
+    color:blue;
+}
+
+.output{
+    background-color: yellow;
+    width:79%;
+    /* width:100px; */
+    height:25%;
+    /* height:43vw; */
+} 
+
+.buttons{
+
+    background-color: brown;
+    width:83%;
+    height:70%;
+    width:100px;
+    height:100px;
+} 
+
+/* .buttons__extra .buttons__operators .buttons__ */
+
+
+
+/* .buttons__operators{
+    font-size: rem;
+} */
+
+@media (min-width:1024px) {
+    body{
+        align-items: center;
+       
+    }
+   .calculator{ 
+        max-width: 400px;
+        min-width: 280px;
+
+        max-height: 825px;
+        min-height: 100px;
+
+        width: 21%;
+        height: 90vh;
+
+        border-radius: 1.5rem;
+
+   } 
+}
