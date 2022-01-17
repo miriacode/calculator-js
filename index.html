@@ -11,40 +11,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body class="dark-theme flex">
-    <div class="calculator flex">
-        <div class="toggle">
+    <main class="calculator flex">
+        <section class="toggle">
             <!-- add -->
-        </div>
-        <div class="output">
-            <div class="previous__output">1x8</div>
-            <div class="current__output">8</div>
-        </div>
+        </section>
+        <section class="output">
+            <article class="previous__output">1x8</article>
+            <article class="current__output">8</article>
+        </section>
 
-        <div class="buttons grid">
-            <div class="buttons__extra">M+</div>
-            <div class="buttons__extra">M-</div>
-            <div class="buttons__extra">M</div>
-            <div class="buttons__extra buttons__extra--delete"></div>
-            <div class="buttons__extra">AC</div>
-            <div class="buttons__extra">+/-</div>
-            <div class="buttons__extra">%</div>
-            <div class="buttons__operator">÷</div>
-            <div class="buttons__number">7</div>
-            <div class="buttons__number">8</div>
-            <div class="buttons__number">9</div>
-            <div class="buttons__operator">x</div>
-            <div class="buttons__number">4</div>
-            <div class="buttons__number">5</div>
-            <div class="buttons__number">6</div>
-            <div class="buttons__operator">-</div>
-            <div class="buttons__number">1</div>
-            <div class="buttons__number">2</div>
-            <div class="buttons__number">3</div>
-            <div class="buttons__operator">+</div>
-            <div class="buttons__number buttons__number--double">0</div>
-            <div class="buttons__number">,</div>
-            <div class="buttons__operator">=</div>
-        </div>
-    </div>
+        <section class="buttons grid">
+            <button data-button-extra>M+</button>
+            <button data-button-extra>M-</button>
+            <button data-button-extra>M</button>
+            <button data-button-extra class="buttons__extra--delete"></button>
+            <button data-button-extra>AC</button>
+            <button data-button-extra>+/-</button>
+            <button data-button-extra>%</button>
+            <button data-button-operator>÷</button>
+            <button data-button-number>7</button>
+            <button data-button-number>8</button>
+            <button data-button-number>9</button>
+            <button data-button-operator>x</button>
+            <button data-button-number>4</button>
+            <button data-button-number>5</button>
+            <button data-button-number>6</button>
+            <button data-button-operator>-</button>
+            <button data-button-number>1</button>
+            <button data-button-number>2</button>
+            <button data-button-number>3</button>
+            <button data-button-operator>+</button>
+            <button data-button-number class="buttons__number--double">0</button>
+            <button data-button-number>,</button>
+            <button data-button-operator>=</button>
+        </section>
+    </main>
+    <script src="/src/index.js"></script>
+    <script src="/src/views/calculatorView.js"></script>
+    <script src="/src/controllers/calculatorController.js"></script>
 </body>
 </html>

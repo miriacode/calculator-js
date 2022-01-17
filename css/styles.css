@@ -7,6 +7,7 @@
     --width:80%;
 }
 
+
 .light-theme{
     --background-color:hsl(224, 28%, 76%);
     --background-color-calculator:hsl(240, 7%, 95%);
@@ -89,10 +90,13 @@ body{
     color:var(--color-operator-and-number);
 } 
 
+
 .buttons{
     /* background-color: brown; */
     width:80%;
     height:58%;
+
+
 } 
 
 .grid{
@@ -103,7 +107,9 @@ body{
     row-gap:0.88rem;
 }
 
-.buttons__extra--delete, .buttons__extra, .buttons__number, .buttons__operator{
+.buttons__extra--delete, [data-button-extra], [data-button-number], [data-button-operator]{
+    border:none;
+    
     display:flex;
     flex-direction: row;
     justify-content: center;
@@ -111,23 +117,25 @@ body{
     
     border-radius: 50%;
     box-shadow: 0.35rem 0.35rem 1rem 1px var(--shadow);
-
-    
+   
 }
 
-.buttons__number{
+[data-button-number]{
     font-size: 1.75rem;
     background-color:var(--background-color-number);
     color:var(--color-operator-and-number);
 }
-.buttons__operator{
+[data-button-operator]{
     font-size: 2rem;
     background-color:var(--background-color-operator);
     color:var(--color-operator-and-number);
 }
-.buttons__extra{
+
+[data-button-extra]{
+    font-size: 1.5rem;
     background-color:var(--background-color-extra);
 }
+
 .buttons__extra--delete{
     background-image: url(./assets/images/delete-symbol.png);
     background-color:var(--background-color-extra);
