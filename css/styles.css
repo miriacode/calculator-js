@@ -17,6 +17,10 @@
     --color-operator-and-number:hsl(0, 0%, 0%);
     --color-previous-output:hsl(0, 1%, 56%);
     --shadow:hsla(0, 2%, 68%, 0.5);
+
+    --background-color-number-active:hsl(0, 7%, 92%);
+    --background-color-extra-active:hsl(0, 1%, 69%);
+    --background-color-operator-active:hsl(35, 100%, 63%);
 }
 
 .dark-theme{
@@ -28,6 +32,10 @@
     --color-operator-and-number:hsl(0, 0%, 100%);
     --color-previous-output:hsl(0, 1%, 54%);
     --shadow:hsl(0, 2%, 9%);
+
+    --background-color-number-active:hsl(216, 9%, 11%);
+    --background-color-extra-active:hsl(0, 4%, 77%);
+    --background-color-operator-active:hsl(35, 96%, 59%);
 }
 
 body{
@@ -118,6 +126,16 @@ body{
     border-radius: 50%;
     box-shadow: 0.35rem 0.35rem 1rem 1px var(--shadow);
    
+}
+
+[data-button-number]:active{
+    background-color:var(--background-color-number-active);
+}
+[data-button-extra]:active{
+    background-color:var(--background-color-extra-active);
+}
+[data-button-operator]:active{
+    background-color:var(--background-color-operator-active);
 }
 
 [data-button-number]{
