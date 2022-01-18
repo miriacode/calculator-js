@@ -1,3 +1,4 @@
+// Constants
 const OPERATORS = {
     SUM: '+',
     SUB: '-',
@@ -5,3 +6,10 @@ const OPERATORS = {
     MUL: 'x',
     EQU: '='
 }
+
+// Obtain the right token for every symbol
+const operatorsSymbols = new Map();
+operatorsSymbols.set('+', '+');
+operatorsSymbols.set('-', '-');
+operatorsSymbols.set('x', '*');
+operatorsSymbols.set('÷', '/');
