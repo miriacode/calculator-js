@@ -20,8 +20,10 @@
     /* --calculator-shadow:hsl(0, 5%, 75%); */
 
     --background-color-number-active:hsl(0, 7%, 92%);
-    --background-color-extra-active:hsl(0, 1%, 69%);
-    --background-color-operator-active:hsl(35, 100%, 63%);
+    --background-color-extra-active:hsl(0, 0%, 73%);
+    --background-color-operator-active:hsl(35, 100%, 48%);
+
+    --delete-symbol:url(/assets/images/light-theme-delete-symbol.png);
 }
 
 .dark-theme{
@@ -35,8 +37,10 @@
     --shadow:hsl(0, 2%, 9%);
 
     --background-color-number-active:hsl(216, 9%, 11%);
-    --background-color-extra-active:hsl(0, 4%, 77%);
-    --background-color-operator-active:hsl(35, 96%, 59%);
+    --background-color-extra-active:hsl(0, 1%, 59%);
+    --background-color-operator-active:hsl(35, 96%, 43%);
+
+    --delete-symbol:url(/assets/images/dark-theme-delete-symbol.png);
 }
 
 body{
@@ -66,7 +70,6 @@ body{
     height: 170vw;
     border-radius: 2.21rem;
     justify-content: center;
-    /* box-shadow: 0.5rem 0.5rem 1.5rem 8px var(--calculator-shadow);   */
 }
 
 .toggle{
@@ -128,17 +131,22 @@ body{
     
     border-radius: 50%;
     box-shadow: 0.35rem 0.35rem 1rem 1px var(--shadow);
+    cursor:pointer;
    
 }
-
-[data-button-number]:active{
+    
+[data-button-number]:active, [data-button-number]:hover{
     background-color:var(--background-color-number-active);
 }
-[data-button-extra]:active{
+[data-button-extra]:active, [data-button-extra]:hover{
     background-color:var(--background-color-extra-active);
 }
-[data-button-operator]:active{
+[data-button-operator]:active, [data-button-operator]:hover{
     background-color:var(--background-color-operator-active);
+}
+
+.buttons__extra--delete:active{
+    background-color:var(--background-color-number-active);
 }
 
 [data-button-number]{
@@ -158,12 +166,11 @@ body{
 }
 
 .buttons__extra--delete{
-    background-image: url(/assets/images/delete-symbol.png);
-    background-color:var(--background-color-extra);
+    background-image: var(--delete-symbol);
+    background-color:var(--background-color-number);
     background-size: 40%;
     background-repeat: no-repeat;
     background-position: center;
-
 }
 
 .buttons:nth-child(22){
