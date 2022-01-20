@@ -52,4 +52,26 @@ class CalculatorController {
       return this.lastCalculatedResult;
     }
   }
+
+  processPercentage(){ 
+      const percentage = new ExtraOperations();
+    if(this.operationQueue.length<=2){//2->1
+      percentage.setOnlyOperand(this.lastCalculatedResult);
+      this.lastCalculatedResult = percentage.applyPercentage();
+      this.operationQueue = [];
+      return this.lastCalculatedResult;
+    }
+    else{
+      // debugger
+      // //In order to make the second operand able to turn into percentage
+      // const queue = [...this.operationQueue]
+      // percentage.setOnlyOperand(queue.pop());
+      // percentage.applyPercentage();
+      // this.operationQueue[2] = this.operationQueue.splice(2,1,percentage.getOnlyOperand());
+      // // return ;
+  
+    }
+    
+  }
+
 }

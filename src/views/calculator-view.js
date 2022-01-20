@@ -26,15 +26,25 @@ class CalculatorView {
   }
 
   pressOperator(operator) {
+  
     if (operator !== OPERATORS.EQU) {
-      const number = parseInt(this.currentOutput);
+      const number = parseFloat(this.currentOutput);
       this.calculatorController.processOperation(number, operator);
       this.currentOutput = this.calculatorController.getLastCalculatedResult();
     } else {
-      const number = parseInt(this.currentOutput);
+      const number = parseFloat(this.currentOutput);
       this.currentOutput = this.calculatorController.processEqualOperator(number);
     }
     this.operatorPressed = true;
     this.updateHTMLOutput();
   }
+
+  pressExtraOperations(extraOperator){
+    if(extraOperator == EXTRAOPERATORS.PERCENTAGE){
+      this.calculatorController.processPercentage()
+      this.currentOutput = this.calculatorController.getLastCalculatedResult();
+    }
+    this.updateHTMLOutput();
+  }
+  
 }

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const numberButtons = [...document.querySelectorAll("[data-button-number]")];
   const numberExtras = [...document.querySelectorAll("[data-button-extra]")];
   const numberOperators = [...document.querySelectorAll("[data-button-operator]")];
- 
+
   //Event Listeners
   numberButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   numberExtras.forEach((button) => {
     button.addEventListener("click", () => {
-      // console.log(button.innerText);
+      const operator = button.innerText;
+      calculatorView.pressExtraOperations(operator);
     });
   });
 });
