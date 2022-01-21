@@ -2,6 +2,7 @@ class CalculatorController {
   constructor() {
     this.lastCalculatedResult = 0;
     this.operationQueue = []; // Cola de operaciones
+    this.secondOperand = 0;
   }
 
   getLastCalculatedResult() {
@@ -40,6 +41,7 @@ class CalculatorController {
         // tenemos todo lo necesario para hacer la operación, sea
         // la que sea. Por eso llamamos al método evaluate
         this.lastCalculatedResult = prevOperation.evaluate();
+        this.SecondOperand = prevOperation.getSecondOperand();
       } else {
         // Pero si no tiene un segundo operador
         // Entonces se lo asignamos y evaluamos
@@ -56,7 +58,6 @@ class CalculatorController {
   processPercentage(){ 
       const percentage = new ExtraOperations();
     if(this.operationQueue.length==0){//2->1//<=2
-      console.log('sisi')
       percentage.setOnlyOperand(this.lastCalculatedResult);
       percentage.applyPercentage()
       this.lastCalculatedResult = percentage.getOnlyOperand();
