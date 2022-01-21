@@ -12,7 +12,8 @@ class ExtraOperations{
     }
 
     applyPercentage(){
-        return this.onlyOperand /100;
+        //return 
+        this.onlyOperand = this.onlyOperand /100;
     }
 
     changeTheSign(){

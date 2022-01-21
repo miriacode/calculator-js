@@ -25,6 +25,10 @@ class Operation {
     return this.secondOperand;
   }
 
+  getOperator(){
+    return this.operator;
+  }
+
   evaluate() {
     return eval(this.firstOperand + this.operator + this.secondOperand);
   }

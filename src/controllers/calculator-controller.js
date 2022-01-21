@@ -55,21 +55,22 @@ class CalculatorController {
 
   processPercentage(){ 
       const percentage = new ExtraOperations();
-    if(this.operationQueue.length<=2){//2->1
+    if(this.operationQueue.length==0){//2->1//<=2
+      console.log('sisi')
       percentage.setOnlyOperand(this.lastCalculatedResult);
-      this.lastCalculatedResult = percentage.applyPercentage();
+      percentage.applyPercentage()
+      this.lastCalculatedResult = percentage.getOnlyOperand();
       this.operationQueue = [];
       return this.lastCalculatedResult;
     }
     else{
-      // debugger
-      // //In order to make the second operand able to turn into percentage
-      // const queue = [...this.operationQueue]
-      // percentage.setOnlyOperand(queue.pop());
-      // percentage.applyPercentage();
-      // this.operationQueue[2] = this.operationQueue.splice(2,1,percentage.getOnlyOperand());
-      // // return ;
-  
+      //OBTENER OPTRO MODO DE HALLAR EL LAST NUMBER!!!
+      //Esto debe ir en el View
+      const currentOut = document.querySelector('.current__output');
+      percentage.setOnlyOperand(parseFloat(currentOut.innerText));
+      currentOut.innerText = percentage.getOnlyOperand()
+      percentage.applyPercentage();
+      this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand())
     }
     
   }
