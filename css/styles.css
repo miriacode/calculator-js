@@ -24,7 +24,7 @@
     --background-color-extra-active:hsl(0, 0%, 73%);
     --background-color-operator-active:hsl(35, 100%, 48%);
 
-    --delete-symbol:url(/assets/images/light-theme-delete-symbol.png);
+    --delete-symbol:url(./../assets/images/light-theme-delete-symbol.png);
 
     --toggle-fill-color:hsl(0, 17%, 92%);
     --toggle-shadow:hsla(0, 0%, 0%, 0.25);
@@ -44,7 +44,7 @@
     --background-color-extra-active:hsl(0, 1%, 59%);
     --background-color-operator-active:hsl(35, 96%, 43%);
 
-    --delete-symbol:url(/assets/images/dark-theme-delete-symbol.png);
+    --delete-symbol:url(./../assets/images/dark-theme-delete-symbol.png);
 
     --toggle-fill-color:hsl(0, 4%, 80%);
     --toggle-shadow:rgba(167, 164, 164, 0.5);
