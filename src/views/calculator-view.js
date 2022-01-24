@@ -43,8 +43,27 @@ class CalculatorView {
     if(extraOperator == EXTRAOPERATORS.PERCENTAGE){
       this.calculatorController.processPercentage()
       this.currentOutput = this.calculatorController.getLastCalculatedResult();
+    }else if(extraOperator == EXTRAOPERATORS.CHANGESIGN){
+      this.calculatorController. processChangeSign()
+      this.currentOutput = this.calculatorController.getLastCalculatedResult();
+    }else if(extraOperator == EXTRAOPERATORS.RESET){
+      this.calculatorController.reset()
+      this.currentOutput = this.calculatorController.getLastCalculatedResult();
+    }else if(extraOperator == EXTRAOPERATORS.DELETE){
+      this.calculatorController.delete()
+      this.currentOutput = this.calculatorController.getLastCalculatedResult();
     }
+    
     this.updateHTMLOutput();
+  }
+
+  changeTheme(){
+    const body = document.querySelector("body")
+    if(body.classList.contains("light-theme")){
+      body.classList.replace("light-theme","dark-theme")
+    }else{
+      body.classList.replace("dark-theme","light-theme")
+    }
   }
   
 }

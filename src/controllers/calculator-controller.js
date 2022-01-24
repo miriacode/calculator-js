@@ -10,7 +10,7 @@ class CalculatorController {
   }
 
   processOperation(number, operator) {
-    if (this.operationQueue.length > 0) {
+    if (this.operationQueue.length) {
       // Hay por lo menos una operación en la cola
       // presumimos que esa operación le falta el segundo operando
       const prevOperation = this.operationQueue.shift();
@@ -22,13 +22,15 @@ class CalculatorController {
       currentOperation.setOperator(operatorsSymbols.get(operator));
       this.operationQueue.push(currentOperation);
       this.lastCalculatedResult = result;
+      console.log(this.operationQueue)
+
     } else {
       // No hay elementos. Es la primera operación que se va a hacer
       const operation = new Operation();
       operation.setFirstOperand(number);
       operation.setOperator(operatorsSymbols.get(operator));
       this.operationQueue.push(operation);
-      this.lastCalculatedResult = operation.getFirstOperand();
+      this.lastCalculatedResult = operation.getFirstOperand(); 
     }
   }
 
@@ -41,12 +43,14 @@ class CalculatorController {
         // tenemos todo lo necesario para hacer la operación, sea
         // la que sea. Por eso llamamos al método evaluate
         this.lastCalculatedResult = prevOperation.evaluate();
-        this.SecondOperand = prevOperation.getSecondOperand();
+        // this.secondOperand = prevOperation.getSecondOperand();
+        // console.log('hola')
       } else {
         // Pero si no tiene un segundo operador
         // Entonces se lo asignamos y evaluamos
         prevOperation.setSecondOperand(number);
         this.lastCalculatedResult = prevOperation.evaluate();
+        //console.log("Tienes 1 operador")
       }
       return this.lastCalculatedResult;
     } else {
@@ -73,6 +77,42 @@ class CalculatorController {
       percentage.applyPercentage();
       this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand())
     }
+    
+  }
+
+  processChangeSign(){ 
+    const percentage = new ExtraOperations();
+  if(this.operationQueue.length==0){//2->1//<=2
+    percentage.setOnlyOperand(this.lastCalculatedResult);
+    percentage.changeTheSign()
+    this.lastCalculatedResult = percentage.getOnlyOperand();
+    this.operationQueue = [];
+    return this.lastCalculatedResult;
+  }
+  else{
+    //OBTENER OPTRO MODO DE HALLAR EL LAST NUMBER!!!
+    //Esto debe ir en el View
+    const currentOut = document.querySelector('.current__output');
+    percentage.setOnlyOperand(parseFloat(currentOut.innerText));
+    currentOut.innerText = percentage.getOnlyOperand()
+    percentage.changeTheSign();
+    this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand())
+  }
+  
+}
+
+  reset(){
+    this.lastCalculatedResult = 0;
+  }
+
+  delete(){
+    //Aquí tb!!!
+    const currentOut = document.querySelector('.current__output');
+    const array = currentOut.innerText.split('')
+    // console.log(currentOut)
+    //  Number(currentOut))
+    const deletedDigit = array.pop()
+    currentOut.innerText = array.join('')
     
   }
 

@@ -18,6 +18,8 @@ operatorsSymbols.set('÷', '/');
 const EXTRAOPERATORS = {
     PERCENTAGE: '%',
     CHANGESIGN: '+/-',
+    RESET: 'AC',
+    DELETE: '',
 }
 
 // const extraOperatorsSymbols = new Map();
