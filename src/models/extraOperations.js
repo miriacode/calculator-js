@@ -12,13 +12,12 @@ class ExtraOperations{
     }
 
     applyPercentage(){
-        //return 
         this.onlyOperand = this.onlyOperand /100;
     }
 
     changeTheSign(){
         if(this.onlyOperand<0){
-            this.onlyOperand = this.onlyOperand.abs()
+            this.onlyOperand = Math.abs(this.onlyOperand)
         }else{
             this.onlyOperand = -this.onlyOperand
         }

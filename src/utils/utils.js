@@ -21,7 +21,3 @@ const EXTRAOPERATORS = {
     RESET: 'AC',
     DELETE: '',
 }
-
-// const extraOperatorsSymbols = new Map();
-// extraOperatorsSymbols.set('%', '/100');
-// extraOperatorsSymbols.set('+/-', '');

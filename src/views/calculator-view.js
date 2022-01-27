@@ -1,69 +1,76 @@
 class CalculatorView {
   constructor(controller) {
-    this.currentOutput = "";
-    this.operatorPressed = false;
     this.calculatorController = controller;
+    this.numberOutput = "";
+    this.resultOutput = "";
+    this.operatorPressed = false;
   }
 
-  getCurrentOutput() {
-    return this.currentOutput;
+  getNumberOutput() {
+    return this.numberOutput;
   }
 
-  updateHTMLOutput() {
-    // const previousOut = document.querySelector('.previous__output')
-    const currentOut = document.querySelector('.current__output');
-    currentOut.innerText = this.getCurrentOutput();
+  getResultOutput() {
+    return this.resultOutput;
+  }
+
+  updateResultOutput() {
+    const currentOut = document.querySelector(".current__output");
+    currentOut.innerText = this.getResultOutput();
+  }
+
+  updateNumberOutput() {
+    const currentOut = document.querySelector(".current__output");
+    currentOut.innerText = this.getNumberOutput();
   }
 
   pressNumber(number) {
+    this.calculatorController.setNumber(number);
     if (!this.operatorPressed) {
-      this.currentOutput += number;
-    } else {
-      this.currentOutput = number;
       this.operatorPressed = false;
     }
-    this.updateHTMLOutput();
+    this.numberOutput = this.calculatorController.getNumber();
+    this.updateNumberOutput();
   }
 
   pressOperator(operator) {
-  
     if (operator !== OPERATORS.EQU) {
-      const number = parseFloat(this.currentOutput);
-      this.calculatorController.processOperation(number, operator);
-      this.currentOutput = this.calculatorController.getLastCalculatedResult();
+      this.calculatorController.processOperation(operator);
+      this.resultOutput = this.calculatorController.getLastCalculatedResult();
+      this.updateResultOutput();
     } else {
-      const number = parseFloat(this.currentOutput);
-      this.currentOutput = this.calculatorController.processEqualOperator(number);
+      this.calculatorController.setNumber(null);
+      this.numberOutput = this.calculatorController.processEqualOperator();
+      this.updateNumberOutput();
     }
     this.operatorPressed = true;
+    this.numberOutput = this.calculatorController.getNumber();
+    this.calculatorController.setNumber("");
+  }
+
+  pressExtraOperations(extraOperator) {
+    if (extraOperator == EXTRAOPERATORS.PERCENTAGE) {
+      this.calculatorController.processPercentage();
+      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+    } else if (extraOperator == EXTRAOPERATORS.CHANGESIGN) {
+      this.calculatorController.processChangeSign();
+      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+    } else if (extraOperator == EXTRAOPERATORS.RESET) {
+      this.calculatorController.reset();
+      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+    } else if (extraOperator == EXTRAOPERATORS.DELETE) {
+      this.calculatorController.delete();
+      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+    }
     this.updateHTMLOutput();
   }
 
-  pressExtraOperations(extraOperator){
-    if(extraOperator == EXTRAOPERATORS.PERCENTAGE){
-      this.calculatorController.processPercentage()
-      this.currentOutput = this.calculatorController.getLastCalculatedResult();
-    }else if(extraOperator == EXTRAOPERATORS.CHANGESIGN){
-      this.calculatorController. processChangeSign()
-      this.currentOutput = this.calculatorController.getLastCalculatedResult();
-    }else if(extraOperator == EXTRAOPERATORS.RESET){
-      this.calculatorController.reset()
-      this.currentOutput = this.calculatorController.getLastCalculatedResult();
-    }else if(extraOperator == EXTRAOPERATORS.DELETE){
-      this.calculatorController.delete()
-      this.currentOutput = this.calculatorController.getLastCalculatedResult();
-    }
-    
-    this.updateHTMLOutput();
-  }
-
-  changeTheme(){
-    const body = document.querySelector("body")
-    if(body.classList.contains("light-theme")){
-      body.classList.replace("light-theme","dark-theme")
-    }else{
-      body.classList.replace("dark-theme","light-theme")
+  changeTheme() {
+    const body = document.querySelector("body");
+    if (body.classList.contains("light-theme")) {
+      body.classList.replace("light-theme", "dark-theme");
+    } else {
+      body.classList.replace("dark-theme", "light-theme");
     }
   }
-  
 }
