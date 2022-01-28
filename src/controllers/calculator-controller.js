@@ -51,15 +51,19 @@ class CalculatorController {
   }
 
   processEqualOperator() {
+    // debugger
+    console.log(this.operationQueue)
     let number = parseFloat(this.number);
     if (this.operationQueue.length > 0) {
       // Si la cola tiene alguna operación guardada
       const prevOperation = this.operationQueue.shift();
+      console.log(prevOperation)
       if (prevOperation.getSecondOperand()) {
         // Si tiene un segundo operador entonces tenemos todo lo necesario para hacer la operación, sea
         // la que sea. Por eso llamamos al método evaluate
-        prevOperation.setFirstOperand(this.lastCalculatedResult);
+        prevOperation.setFirstOperand(this.number);
         this.lastCalculatedResult = prevOperation.evaluate();
+        return this.lastCalculatedResult
 
       } else {
         // Pero si no tiene un segundo operador
@@ -80,14 +84,14 @@ class CalculatorController {
       //2->1//<=2
       percentage.setOnlyOperand(this.numberShown);
       percentage.applyPercentage();
-      this.numberShown = percentage.getOnlyOperand();
+      this.number = percentage.getOnlyOperand();
       this.operationQueue = [];
-      return this.numberShown;
+      return this.number;
     } else {
       percentage.setOnlyOperand(parseFloat(this.number));
       percentage.applyPercentage();
       this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand());
-      this.number;
+      return this.number;
     }
   }
 
@@ -96,25 +100,30 @@ class CalculatorController {
     if (this.operationQueue.length == 0) {
       percentage.setOnlyOperand(this.number);
       percentage.changeTheSign();
-      this.numberShown = percentage.getOnlyOperand();
+      this.number = percentage.getOnlyOperand();
     } else {
       percentage.setOnlyOperand(parseFloat(this.number));
       percentage.changeTheSign();
       this.number = percentage.getOnlyOperand();
       this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand());
     }
+    return this.number;
   }
 
   reset() {
-    this.numberShown = 0;
+    this.operationQueue = [];
+    this.number = "";
+    this.lastCalculatedResult = 0;
+    return this.lastCalculatedResult;
   }
 
   delete() {
-    const currentOut = document.querySelector(".current__output");
-    const array = currentOut.innerText.split("");
-    // console.log(currentOut)
-    //  Number(currentOut))
-    const deletedDigit = array.pop();
-    currentOut.innerText = array.join("");
+    let end = this.number.length-1;
+    this.number = this.number.substring(0,end);
+    return this.number;
   }
+  //Falta percentage
+
+
+ 
 }

@@ -4,8 +4,17 @@ class CalculatorView {
     this.numberOutput = "";
     this.resultOutput = "";
     this.operatorPressed = false;
+    this.extraOperationUsed = false;
   }
-
+  outputCero(){
+    if(this.numberOutput == ""||this.resultOutput ==""){
+      this.numberOutput = 0;
+      this.resultOutput = 0;
+      this.updateNumberOutput();
+      this.updateResultOutput();
+    }
+  } 
+  
   getNumberOutput() {
     return this.numberOutput;
   }
@@ -42,6 +51,7 @@ class CalculatorView {
       this.calculatorController.setNumber(null);
       this.numberOutput = this.calculatorController.processEqualOperator();
       this.updateNumberOutput();
+      this.extraOperationUsed = true;
     }
     this.operatorPressed = true;
     this.numberOutput = this.calculatorController.getNumber();
@@ -52,17 +62,22 @@ class CalculatorView {
     if (extraOperator == EXTRAOPERATORS.PERCENTAGE) {
       this.calculatorController.processPercentage();
       this.numberOutput = this.calculatorController.getLastCalculatedResult();
+      
     } else if (extraOperator == EXTRAOPERATORS.CHANGESIGN) {
-      this.calculatorController.processChangeSign();
-      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+      if(this.extraOperationUsed){
+        this.resultOutput =this.calculatorController.reset();
+        this.updateResultOutput();
+      }else{
+        this.numberOutput = this.calculatorController.processChangeSign();
+        this.updateNumberOutput();
+      }
     } else if (extraOperator == EXTRAOPERATORS.RESET) {
-      this.calculatorController.reset();
-      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+      this.resultOutput =this.calculatorController.reset();
+      this.updateResultOutput();
     } else if (extraOperator == EXTRAOPERATORS.DELETE) {
-      this.calculatorController.delete();
-      this.numberOutput = this.calculatorController.getLastCalculatedResult();
+      this.numberOutput = this.calculatorController.delete();
+      this.updateNumberOutput();
     }
-    this.updateHTMLOutput();
   }
 
   changeTheme() {
