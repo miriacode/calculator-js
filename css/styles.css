@@ -167,7 +167,7 @@ body{
     row-gap:0.88rem;
 }
 
-.buttons__extra--delete, [data-button-extra], [data-button-number], [data-button-operator]{
+.buttons__extra--delete, [data-button-extra], [data-button-number], [data-button-operator], [data-button-comma]{
     border:none;
     display:flex;
     flex-direction: row;
@@ -176,10 +176,9 @@ body{
     border-radius: 50%;
     box-shadow: 0.35rem 0.35rem 1rem 1px var(--shadow);
     cursor:pointer;
-   
 }
     
-[data-button-number]:active, [data-button-number]:hover{
+[data-button-number]:active, [data-button-number]:hover, [data-button-comma]:hover, [data-button-comma]:active{
     background-color:var(--background-color-number-active);
 }
 [data-button-extra]:active, [data-button-extra]:hover{
@@ -189,11 +188,11 @@ body{
     background-color:var(--background-color-operator-active);
 }
 
-.buttons__extra--delete:active{
+.buttons__extra--delete:active,.buttons__extra--delete:hover{
     background-color:var(--background-color-number-active);
 }
 
-[data-button-number]{
+[data-button-number],[data-button-comma]{
     font-size: 1.75rem;
     background-color:var(--background-color-number);
     color:var(--color-operator-and-number);
