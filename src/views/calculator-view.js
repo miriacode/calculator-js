@@ -6,14 +6,6 @@ class CalculatorView {
     this.operatorPressed = false;
     this.extraOperationUsed = false;
   }
-  outputCero(){
-    if(this.numberOutput == ""||this.resultOutput ==""){
-      this.numberOutput = 0;
-      this.resultOutput = 0;
-      this.updateNumberOutput();
-      this.updateResultOutput();
-    }
-  } 
   
   getNumberOutput() {
     return this.numberOutput;
@@ -42,6 +34,11 @@ class CalculatorView {
     this.updateNumberOutput();
   }
 
+  pressComma(){
+    this.numberOutput = this.calculatorController.addComma();
+    this.updateNumberOutput();
+  }
+
   pressOperator(operator) {
     if (operator !== OPERATORS.EQU) {
       this.calculatorController.processOperation(operator);
@@ -60,9 +57,13 @@ class CalculatorView {
 
   pressExtraOperations(extraOperator) {
     if (extraOperator == EXTRAOPERATORS.PERCENTAGE) {
-      this.calculatorController.processPercentage();
-      this.numberOutput = this.calculatorController.getLastCalculatedResult();
-      
+      if(this.extraOperationUsed){
+        this.resultOutput =this.calculatorController.reset();
+        this.updateResultOutput();
+      }else{
+        this.numberOutput = this.calculatorController.processPercentage();
+        this.updateNumberOutput();
+      }
     } else if (extraOperator == EXTRAOPERATORS.CHANGESIGN) {
       if(this.extraOperationUsed){
         this.resultOutput =this.calculatorController.reset();
@@ -77,6 +78,7 @@ class CalculatorView {
     } else if (extraOperator == EXTRAOPERATORS.DELETE) {
       this.numberOutput = this.calculatorController.delete();
       this.updateNumberOutput();
+      console.log(this.numberOutput);
     }
   }
 

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const numberButtons = [...document.querySelectorAll("[data-button-number]")];
   const numberExtras = [...document.querySelectorAll("[data-button-extra]")];
   const numberOperators = [...document.querySelectorAll("[data-button-operator]")];
+  const commaButton = document.querySelector("[data-button-comma]");
   const toggle = document.querySelector('.toggle__input')
 
   //Toggle
@@ -17,6 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
       calculatorView.pressNumber(number);
     });
   });
+
+  commaButton.addEventListener("click",()=>{
+    // const comma = button.innerText;
+    calculatorView.pressComma();
+  })
 
   numberOperators.forEach((button) => {
     button.addEventListener("click", () => {

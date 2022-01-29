@@ -23,6 +23,12 @@ class CalculatorController {
     return this.lastCalculatedResult;
   }
 
+  addComma(){
+    this.number = this.getNumber() +".";
+    // console.log(this.getNumber())
+    return this.getNumber();
+  }
+
   processOperation(operator) {
     let number;
     if (this.getNumber()) {
@@ -81,31 +87,29 @@ class CalculatorController {
   processPercentage() {
     const percentage = new ExtraOperations();
     if (this.operationQueue.length == 0) {
-      //2->1//<=2
-      percentage.setOnlyOperand(this.numberShown);
+      percentage.setOnlyOperand(this.number);
       percentage.applyPercentage();
       this.number = percentage.getOnlyOperand();
-      this.operationQueue = [];
-      return this.number;
     } else {
       percentage.setOnlyOperand(parseFloat(this.number));
       percentage.applyPercentage();
+      this.number = percentage.getOnlyOperand();
       this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand());
-      return this.number;
     }
+    return this.number;
   }
 
   processChangeSign() {
-    const percentage = new ExtraOperations();
+    const changeSign = new ExtraOperations();
     if (this.operationQueue.length == 0) {
-      percentage.setOnlyOperand(this.number);
-      percentage.changeTheSign();
-      this.number = percentage.getOnlyOperand();
+      changeSign.setOnlyOperand(this.number);
+      changeSign.changeTheSign();
+      this.number = changeSign.getOnlyOperand();
     } else {
-      percentage.setOnlyOperand(parseFloat(this.number));
-      percentage.changeTheSign();
-      this.number = percentage.getOnlyOperand();
-      this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand());
+      changeSign.setOnlyOperand(parseFloat(this.number));
+      changeSign.changeTheSign();
+      this.number = changeSign.getOnlyOperand();
+      this.operationQueue[0].setSecondOperand(changeSign.getOnlyOperand());
     }
     return this.number;
   }
@@ -122,8 +126,4 @@ class CalculatorController {
     this.number = this.number.substring(0,end);
     return this.number;
   }
-  //Falta percentage
-
-
- 
 }

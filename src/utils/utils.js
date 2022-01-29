@@ -4,7 +4,7 @@ const OPERATORS = {
     SUB: '-',
     DIV: '÷',
     MUL: 'x',
-    EQU: '='
+    EQU: '=',
 }
 
 // Obtain the right token for every symbol
