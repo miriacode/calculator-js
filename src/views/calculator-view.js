@@ -58,7 +58,7 @@ class CalculatorView {
   pressExtraOperations(extraOperator) {
     if (extraOperator == EXTRAOPERATORS.PERCENTAGE) {
       if(this.extraOperationUsed){
-        this.resultOutput =this.calculatorController.reset();
+        this.resultOutput =this.calculatorController.processPercentage();
         this.updateResultOutput();
       }else{
         this.numberOutput = this.calculatorController.processPercentage();
@@ -66,8 +66,9 @@ class CalculatorView {
       }
     } else if (extraOperator == EXTRAOPERATORS.CHANGESIGN) {
       if(this.extraOperationUsed){
-        this.resultOutput =this.calculatorController.reset();
+        this.resultOutput =this.calculatorController.processChangeSign();
         this.updateResultOutput();
+        console.log(this.resultOutput)
       }else{
         this.numberOutput = this.calculatorController.processChangeSign();
         this.updateNumberOutput();
@@ -76,9 +77,12 @@ class CalculatorView {
       this.resultOutput =this.calculatorController.reset();
       this.updateResultOutput();
     } else if (extraOperator == EXTRAOPERATORS.DELETE) {
-      this.numberOutput = this.calculatorController.delete();
+      if(this.numberOutput.length>1){
+        this.numberOutput = this.calculatorController.delete();
+      }else{
+        this.numberOutput = 0;
+      }
       this.updateNumberOutput();
-      console.log(this.numberOutput);
     }
   }
 

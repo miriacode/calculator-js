@@ -9,8 +9,12 @@ class CalculatorController {
     if (number === "") {
       this.number = "";
       this.number = number;
-    } else {
-      this.number += number; 
+    }else if(this.number=="00"&&this.number.length==2){
+      this.number ="0";
+    }else if(typeof(this.number) != typeof(number)){
+      this.number;
+    }else {
+      this.number += number;
     }
     if (number) this.lastCalculatedResult = number;
   }
@@ -24,8 +28,12 @@ class CalculatorController {
   }
 
   addComma(){
-    this.number = this.getNumber() +".";
-    // console.log(this.getNumber())
+    let numberArray = this.number.split('')
+    if(numberArray.includes(".")){
+      this.number = this.number;
+    }else{
+      this.number = this.getNumber() +".";
+    }
     return this.getNumber();
   }
 
@@ -53,6 +61,7 @@ class CalculatorController {
       this.operationQueue.push(operation);
       this.lastCalculatedResult = operation.getFirstOperand();
       this.setNumber(operation.getFirstOperand());
+      // console.log(this.getNumber())
     }
   }
 
@@ -100,16 +109,31 @@ class CalculatorController {
   }
 
   processChangeSign() {
-    const changeSign = new ExtraOperations();
+    const percentage = new ExtraOperations();
+    console.log(this.operationQueue)
     if (this.operationQueue.length == 0) {
-      changeSign.setOnlyOperand(this.number);
-      changeSign.changeTheSign();
-      this.number = changeSign.getOnlyOperand();
-    } else {
-      changeSign.setOnlyOperand(parseFloat(this.number));
-      changeSign.changeTheSign();
-      this.number = changeSign.getOnlyOperand();
-      this.operationQueue[0].setSecondOperand(changeSign.getOnlyOperand());
+      percentage.setOnlyOperand(this.number);
+      percentage.changeTheSign();
+      this.number = percentage.getOnlyOperand();
+      console.log(this.number)
+
+      percentage.setOnlyOperand(parseFloat(this.lastCalculatedResult));
+     percentage.changeTheSign();
+       this.lastCalculatedResult = percentage.getOnlyOperand();
+    } 
+    // else if(this.lastCalculatedResult.length) {
+    //   percentage.setOnlyOperand(parseFloat(this.lastCalculatedResult));
+    //   percentage.changeTheSign();
+    //   this.lastCalculatedResult = percentage.getOnlyOperand();
+    //   // this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand());
+    //   console.log(this.lastCalculatedResult)
+    // }
+    else{
+      percentage.setOnlyOperand(parseFloat(this.number));
+      percentage.changeTheSign();
+      this.number = percentage.getOnlyOperand();
+      this.operationQueue[0].setSecondOperand(percentage.getOnlyOperand());
+      console.log(this.number)
     }
     return this.number;
   }
