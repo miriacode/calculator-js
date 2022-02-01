@@ -1,25 +1,26 @@
-class ExtraOperations{
-    constructor(){
-        this.onlyOperand = 0;
-    }
+class ExtraOperations {
+  constructor() {
+    this.onlyOperand = 0;
+  }
 
-    setOnlyOperand(operand){
-        this.onlyOperand = operand;
-    }
+  setOnlyOperand(operand) {
+    this.onlyOperand = operand;
+  }
 
-    getOnlyOperand(){
-        return this.onlyOperand;
-    }
+  getOnlyOperand() {
+    return this.onlyOperand;
+  }
 
-    applyPercentage(){
-        this.onlyOperand = this.onlyOperand /100;
-    }
+  applyPercentage() {
+    this.onlyOperand = this.onlyOperand / 100;
+    console.log(this.onlyOperand);
+  }
 
-    changeTheSign(){
-        if(this.onlyOperand<0){
-            this.onlyOperand = Math.abs(this.onlyOperand)
-        }else{
-            this.onlyOperand = -this.onlyOperand
-        }
+  changeTheSign() {
+    if (this.onlyOperand < 0) {
+      this.onlyOperand = Math.abs(this.onlyOperand);
+    } else {
+      this.onlyOperand = -this.onlyOperand;
     }
+  }
 }

@@ -6,7 +6,7 @@ class CalculatorView {
     this.operatorPressed = false;
     this.extraOperationUsed = false;
   }
-  
+
   getNumberOutput() {
     return this.numberOutput;
   }
@@ -34,7 +34,7 @@ class CalculatorView {
     this.updateNumberOutput();
   }
 
-  pressComma(){
+  pressComma() {
     this.numberOutput = this.calculatorController.addComma();
     this.updateNumberOutput();
   }
@@ -57,31 +57,26 @@ class CalculatorView {
 
   pressExtraOperations(extraOperator) {
     if (extraOperator == EXTRAOPERATORS.PERCENTAGE) {
-      if(this.extraOperationUsed){
-        this.resultOutput =this.calculatorController.processPercentage();
+      if (this.extraOperationUsed) {
+        this.resultOutput = this.calculatorController.processPercentage();
         this.updateResultOutput();
-      }else{
+      } else {
         this.numberOutput = this.calculatorController.processPercentage();
         this.updateNumberOutput();
       }
     } else if (extraOperator == EXTRAOPERATORS.CHANGESIGN) {
-      if(this.extraOperationUsed){
-        this.resultOutput =this.calculatorController.processChangeSign();
+      if (this.extraOperationUsed) {
+        this.resultOutput = this.calculatorController.processChangeSign();
         this.updateResultOutput();
-        console.log(this.resultOutput)
-      }else{
+      } else {
         this.numberOutput = this.calculatorController.processChangeSign();
         this.updateNumberOutput();
       }
     } else if (extraOperator == EXTRAOPERATORS.RESET) {
-      this.resultOutput =this.calculatorController.reset();
+      this.resultOutput = this.calculatorController.reset();
       this.updateResultOutput();
-    } else if (extraOperator == EXTRAOPERATORS.DELETE) {
-      if(this.numberOutput.length>1){
-        this.numberOutput = this.calculatorController.delete();
-      }else{
-        this.numberOutput = 0;
-      }
+    } else if (extraOperator === EXTRAOPERATORS.DELETE) {
+      this.numberOutput = this.calculatorController.delete();
       this.updateNumberOutput();
     }
   }
