@@ -78,6 +78,16 @@ class CalculatorView {
     } else if (extraOperator === EXTRAOPERATORS.DELETE) {
       this.numberOutput = this.calculatorController.delete();
       this.updateNumberOutput();
+
+    }else if(extraOperator == MEMORYOPERATORS.MEMORYADD){
+      this.numberOutput = this.calculatorController.addToMemory();
+      this.updateNumberOutput();
+    }else if(extraOperator == MEMORYOPERATORS.MEMORYRECALL){
+      this.numberOutput = this.calculatorController.recallMemory();
+      this.updateNumberOutput();
+    }else if(extraOperator == MEMORYOPERATORS.MEMORYCLEAR){
+      this.numberOutput = this.calculatorController.clearMemory();
+      this.updateNumberOutput();
     }
   }
 

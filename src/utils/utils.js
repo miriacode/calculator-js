@@ -21,3 +21,10 @@ const EXTRAOPERATORS = {
     RESET: 'AC',
     DELETE: '',
 }
+
+const MEMORYOPERATORS = {
+    MEMORYADD: 'M+',
+    MEMORYSUBSTRACT: 'M-',
+    MEMORYRECALL: 'MR',
+    MEMORYCLEAR: 'MC',
+}
