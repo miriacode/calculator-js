@@ -81,8 +81,6 @@ class CalculatorController {
       this.lastCalculatedResult = operation.getFirstOperand();
       this.setNumber(operation.getFirstOperand());
     }
-      console.log(this.number)
-      console.log(this.lastCalculatedResult)
   }
 
   processEqualOperator() {
@@ -173,36 +171,29 @@ class CalculatorController {
   }
 
   addToMemory(){
-    console.log(this.number)
-    console.log(this.lastCalculatedResult)
-
     this.memoryOperations.addToMemory(this.lastCalculatedResult)
-
     this.storedNumber = this.memoryOperations.recallMemory();
     this.lastCalculatedResult = this.memoryOperations.recallMemory();
     this.number = "";
 
-    console.log(this.storedNumber)
+    return this.storedNumber
+  }
+
+  substractFromMemory(){
+    this.memoryOperations.substractFromMemory(this.lastCalculatedResult)
+    this.storedNumber = this.memoryOperations.recallMemory();
+    this.lastCalculatedResult = this.memoryOperations.recallMemory();
+    this.number = "";
     return this.storedNumber
   }
 
   recallMemory(){
-    // const memoryOperations = new MemoryOperations();
-    // let y = memoryOperations.recallMemory();
-    // console.log(y)
+    this.number = this.storedNumber;
     return this.memoryOperations.recallMemory();
-    // // this.setNumberStored(this.number)
-    
-    // let y = memoryOperations.recallMemory();
-    // // this.number = 
-    // console.log(y)
-    // console.log(this.number)
-    // console.log(y)
-    // return this.storedNumber;
   }
 
   clearMemory(){
+    this.storedNumber = 0;
     return this.memoryOperations.clearMemory();
   }
-
 }

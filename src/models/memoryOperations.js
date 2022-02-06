@@ -11,11 +11,9 @@ class MemoryOperations{
         //M+
         if(this.storedNumber==0){
             this.storedNumber = parseFloat(number);
-            console.log('s')
         }else{
             this.storedNumber += parseFloat(number);
         }
-        console.log(this.storedNumber)
     }
 
     substractFromMemory(number){
@@ -25,7 +23,6 @@ class MemoryOperations{
 
     recallMemory(){
         //MR
-        console.log(this.storedNumber)
         return this.storedNumber;
     }
 
@@ -34,6 +31,4 @@ class MemoryOperations{
         this.storedNumber = 0;
         return this.storedNumber;
     }
-
-
 }

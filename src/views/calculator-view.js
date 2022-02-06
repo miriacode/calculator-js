@@ -82,6 +82,9 @@ class CalculatorView {
     }else if(extraOperator == MEMORYOPERATORS.MEMORYADD){
       this.numberOutput = this.calculatorController.addToMemory();
       this.updateNumberOutput();
+    }else if(extraOperator == MEMORYOPERATORS.MEMORYSUBSTRACT){
+      this.numberOutput = this.calculatorController.substractFromMemory();
+      this.updateNumberOutput();
     }else if(extraOperator == MEMORYOPERATORS.MEMORYRECALL){
       this.numberOutput = this.calculatorController.recallMemory();
       this.updateNumberOutput();
