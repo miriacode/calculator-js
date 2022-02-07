@@ -78,7 +78,6 @@ class CalculatorView {
     } else if (extraOperator === EXTRAOPERATORS.DELETE) {
       this.numberOutput = this.calculatorController.delete();
       this.updateNumberOutput();
-
     }else if(extraOperator == MEMORYOPERATORS.MEMORYADD){
       this.numberOutput = this.calculatorController.addToMemory();
       this.updateNumberOutput();

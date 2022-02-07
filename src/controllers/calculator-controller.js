@@ -175,7 +175,6 @@ class CalculatorController {
     this.storedNumber = this.memoryOperations.recallMemory();
     this.lastCalculatedResult = this.memoryOperations.recallMemory();
     this.number = "";
-
     return this.storedNumber
   }
 
