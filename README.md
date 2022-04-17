@@ -8,7 +8,7 @@
 ## Features 🛠
 - It performs arithmetic operations: addition, subtraction, multiplication, and division.
 
-- Memory Keys Available: add, substract, recall and clear memory.
+- Memory Keys Available: add(M+), substract(M-), recall(MR) and clear memory (MC).
 
 - Change between light and dark theme.
 
